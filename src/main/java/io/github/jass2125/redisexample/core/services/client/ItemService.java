@@ -3,20 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.github.jass2125.redis.core.services.client;
+package io.github.jass2125.redisexample.core.services.client;
 
-import io.github.jass2125.redisexample.core.entity.Product;
+import io.github.jass2125.redisexample.core.entity.Cart;
 import java.util.List;
 
 /**
- *
  * @author <a href="mailto:jair_anderson_bs@hotmail.com">Anderson Souza</a>
- * @since Aug 3, 2017 2:11:34 PM
+ * @since Aug 3, 2017 5:14:25 PM
  */
-public interface ProductService {
+public interface ItemService {
 
-    public List<Product> getProducts();
-
-    public Product searchById(Long id);
+    public List<Cart> getItems(Long id);
 
 }

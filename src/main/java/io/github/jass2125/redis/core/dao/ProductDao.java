@@ -26,12 +26,6 @@ public class ProductDao {
     private void init() {
     }
 
-    @PreDestroy
-    private void onDestroy() {
-        this.em.close();
-        this.em = null;
-    }
-
     public List<Product> searchAllProducts() {
         return em.createQuery("SELECT P FROM Product P", Product.class).getResultList();
     }
@@ -44,6 +38,14 @@ public class ProductDao {
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
+        }
+    }
+
+    public Product searchById(Long id) {
+        try {
+            return em.createQuery("SELECT P FROM Product P WHERE P.id = :id", Product.class).setParameter("id", id).getSingleResult();
+        } catch (Exception e) {
+            return null;
         }
     }
 }

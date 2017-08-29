@@ -26,9 +26,6 @@
                     <h:form>
                         <li>
                             <h:commandButton class="btn btn-danger" value="Logout" action="#{userBean.logout()}"/>
-                            <!--<span class="glyphicon glyphicon-user"></span>-->
-                            <!--</h:commandButton>-->
-                            <!--<button class="btn btn-danger navbar-btn">Button</button>-->
                         </li>
                     </h:form>
                 </ul>
@@ -37,18 +34,21 @@
         <div class="container">
             <h1>Listagem de Produtos</h1>
             <h:form>
+                <h:messages/>
                 <div class="form-group">
                     <label>Produtos</label>
-                    <h:selectOneMenu value="#{productBean.product}" class="form-control">
-                        <f:selectItems value="#{productBean.loadProducts}" var="product" itemLabel="#{product.description}"/>
+                    <h:selectOneMenu value="#{cartBean.product}" class="form-control" converter="productConverter">
+                        <f:selectItems value="#{cartBean.loadProducts}" var="product" itemValue="#{product}" itemLabel="#{product.description}"/>
                     </h:selectOneMenu>
                     <br/>
                     <div class="form-group">
                         <label>Quantidade</label>
-                        <input type="text" class="form-control" ng-model="item.quantity" name="quantity"/>
+                        <h:inputText class="form-control" value="#{cartBean.item.quantity}"/>
                     </div>
                     <br/>
-                    <input type="submit" class="btn btn-success" ng-click="addItem(item)" value="Adicionar Item"/>
+
+                    <h:commandButton value="Adicionar Item" class="btn btn-success" action="#{cartBean.addProduct()}"/>
+                    <!--<input type="submit" ng-click="addItem(item)" value="Adicionar Item"/>-->
                 </div>
             </h:form>
             <div class="page-header">

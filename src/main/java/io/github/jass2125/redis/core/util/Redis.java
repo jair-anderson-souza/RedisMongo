@@ -37,8 +37,8 @@ public class Redis {
         return jedis;
     }
 
-    public void saveWithExpire(String sessionId, int i, String cart) {
-        this.jedis.setex(cart, port, cart);
+    public void saveWithExpire(String sessionId, int expireTime, String cart) {
+        this.jedis.setex(sessionId, expireTime, cart);
     }
 
 }

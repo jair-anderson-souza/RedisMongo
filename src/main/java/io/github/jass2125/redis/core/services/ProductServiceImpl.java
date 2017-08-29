@@ -32,4 +32,13 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
+    @Override
+    public Product searchById(Long id) {
+        try{
+            return productDao.searchById(id);
+        }catch(Exception e){
+            return null;
+        }
+    }
+
 }

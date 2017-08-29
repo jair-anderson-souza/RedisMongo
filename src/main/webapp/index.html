@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>Redis/PostgreSQL Example</title>
+        <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="assets/lib/jquery/dist/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <script src="assets/lib/angular/angular.min.js" type="text/javascript"></script>
+        <script src="assets/lib/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript"></script>
+        <script src="assets/lib/angular-locale-pt-br/angular-locale_pt-br.js" type="text/javascript"></script>
+        <script src="app.js" type="text/javascript"></script>
+        <script src="routes.js" type="text/javascript"></script>
+        <script src="loginCtrl.js" type="text/javascript"></script>
+        <script src="homeCtrl.js" type="text/javascript"></script>
+        <script src="cartCtrl.js" type="text/javascript"></script>
+        <script src="js/initializeJqueryMaterialize.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+
+        <div ui-view="header"></div>
+        <div  class="main" ui-view="content"></div>
+        <div ui-view="footer"></div>
+
+    </body>
+</html>
