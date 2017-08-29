@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.github.jass2125.redisexample.core.entity;
+package io.github.jass2125.redis.core.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -46,6 +46,10 @@ public class Item implements Serializable {
 
     public BigDecimal calcTotal() {
         this.total = this.product.getPrice().multiply(new BigDecimal(quantity));
+        return total;
+    }
+
+    public BigDecimal getTotal() {
         return total;
     }
 

@@ -5,9 +5,9 @@
  */
 package io.github.jass2125.controllers;
 
-import io.github.jass2125.redise.core.services.clients.UserService;
-import io.github.jass2125.redisexample.core.entity.UserPrincipal;
-import io.github.jass2125.redisexample.core.exceptions.LoginInvalidException;
+import io.github.jass2125.redis.redis.services.client.UserService;
+import io.github.jass2125.redis.core.entity.UserPrincipal;
+import io.github.jass2125.redis.core.exceptions.LoginInvalidException;
 import java.io.Serializable;
 import java.util.Map;
 import javax.enterprise.context.RequestScoped;

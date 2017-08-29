@@ -5,7 +5,7 @@
  */
 package io.github.jass2125.redis.core.services.client;
 
-import io.github.jass2125.redisexample.core.entity.Product;
+import io.github.jass2125.redis.core.entity.Product;
 import java.util.List;
 
 /**
@@ -18,5 +18,7 @@ public interface ProductService {
     public List<Product> getProducts();
 
     public Product searchById(Long id);
+
+    public void saveProduct(Product product);
 
 }

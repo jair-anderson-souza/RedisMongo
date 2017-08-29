@@ -6,12 +6,14 @@
 package io.github.jass2125.redis.core.services;
 
 import io.github.jass2125.controllers.GsonConverter;
-import io.github.jass2125.redisexample.core.services.client.CartService;
-import io.github.jass2125.redisexample.core.dao.CartDao;
-import io.github.jass2125.redisexample.core.entity.Cart;
-import io.github.jass2125.redisexample.core.entity.Item;
-//import io.github.jass2125.redisexample.core.services.clients.UserServicde;
+import io.github.jass2125.redis.redis.services.client.CartService;
+import io.github.jass2125.redis.core.dao.CartDao;
+import io.github.jass2125.redis.core.entity.Cart;
+import io.github.jass2125.redis.core.entity.Item;
+import io.github.jass2125.redis.core.exceptions.CartException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 
 /**
@@ -48,65 +50,10 @@ public class CartServiceImpl implements CartService {
         }
     }
 
-    public void verifyDuplicatePdroducts(List<Item> it, List<Item> it2) {
-        for (Item item : it) {
-            for (Item item1 : it2) {
-                if (it.equals(it2)) {
-                    updateQuantity(item, item1);
-                }
-                it.add(item1);
-            }
-        }
-    }
-
-    public void saveCart(Long id, Item item) {
-//        UserPrincipal user = userService.searchById(id);
-//        UserPrincipal user = null;
-//        if (user != null) {
-//            String cartString = cartDao.searchCartByUser(String.valueOf((id)));
-//            Gson gson = new Gson();
-//            Cart cart = gson.fromJson(cartString, Cart.class);
-//            if (cart != null) {
-////                int it = verificaNovoItem(cart.getItems(), item);
-//                int it = 0;
-//                if (it != -1) {
-//                    item.setQuantity(item.getQuantity() + cart.getItems().get(it).getQuantity());
-//                    cart.getItems().set(it, item);
-//                } else {
-//                    cart.addItem(item);
-//                }
-//            } else if (cart == null) {
-//                cart = new Cart();
-//                cart.addItem(item);
-//            }
-//            cart.setSessionId(String.valueOf(id));
-//            String gsonObj = gson.toJson(cart);
-//            cartDao.saveCart(gsonObj, cart.getSessionId());
-//        }
-    }
-
-    public int verificaNdovoItem(List<Item> items, Item item) {
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).equals(item)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
     @Override
-    public Cart getCart(String id) {
-//        String searchCartByUser = cartDao.searchCartByUser(id);
-//        Gson gson = new Gson();
-//        Cart cart = gson.fromJson(searchCartByUser, Cart.class);
-        return null;
+    public Cart getCart(String id) throws CartException {
+        String cartJson = cartDao.searchCartByUser(String.valueOf(id));
+        Cart cart = gsonConverter.convertToObject(cartJson);
+        return cart;
     }
-
-    private void updateQuantity(Item it, Item it2) {
-        Long quantity = it.getQuantity();
-        quantity += it2.getQuantity();
-        it.setQuantity(quantity);
-        it.calcTotal();
-    }
-
 }

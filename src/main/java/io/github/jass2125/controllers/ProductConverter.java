@@ -7,7 +7,7 @@
 package io.github.jass2125.controllers;
 
 import io.github.jass2125.redis.core.services.client.ProductService;
-import io.github.jass2125.redisexample.core.entity.Product;
+import io.github.jass2125.redis.core.entity.Product;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.component.UIComponent;

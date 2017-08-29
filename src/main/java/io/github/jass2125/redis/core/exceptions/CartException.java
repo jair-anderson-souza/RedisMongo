@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package io.github.jass2125.redis.core.services;
+package io.github.jass2125.redis.core.exceptions;
 
 /**
  *

@@ -3,29 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.github.jass2125.redisexample.core.entity;
+package io.github.jass2125.redis.core.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 /**
+ *
  * @author <a href="mailto:jair_anderson_bs@hotmail.com">Anderson Souza</a>
- * @since Aug 4, 2017 10:31:07 AM
+ * @since Jul 25, 2017 11:12:26 PM
  */
 @Entity
-public class UserPrincipal implements Serializable {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String email;
-    private String password;
+    @NotNull
+    private String description;
+    private BigDecimal price;
 
-    public UserPrincipal() {
+    public Product() {
+//        this.price = new BigDecimal(BigInteger.ZERO);
+    }
+
+    public Product(String description, BigDecimal price) {
+        this.description = description;
+        this.price = price;
     }
 
     public Long getId() {
@@ -36,26 +46,26 @@ public class UserPrincipal implements Serializable {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDescription() {
+        return description;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getPassword() {
-        return password;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 13 * hash + Objects.hashCode(this.description);
         return hash;
     }
 
@@ -70,13 +80,13 @@ public class UserPrincipal implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final UserPrincipal other = (UserPrincipal) obj;
-        return Objects.equals(this.id, other.id);
+        final Product other = (Product) obj;
+        return Objects.equals(this.description, other.description);
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", email=" + email + ", password=" + password + '}';
+        return "Product{" + "id=" + id + ", description=" + description + ", price=" + price + '}';
     }
 
 }

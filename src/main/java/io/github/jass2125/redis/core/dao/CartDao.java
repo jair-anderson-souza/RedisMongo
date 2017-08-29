@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.github.jass2125.redisexample.core.dao;
+package io.github.jass2125.redis.core.dao;
 
-import io.github.jass2125.redis.core.services.CartException;
+import io.github.jass2125.redis.core.exceptions.CartException;
 import io.github.jass2125.redis.core.util.Redis;
 import javax.inject.Inject;
 
@@ -28,11 +28,7 @@ public class CartDao {
     }
 
     public String searchCartByUser(String id) throws CartException {
-        try {
-            return redis.get(id);
-        } catch (Exception e) {
-            return null;
-        }
+        return redis.get(id);
     }
 
 //    public void searchCartByUser(Long id) {

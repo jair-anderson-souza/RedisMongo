@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.github.jass2125.redisexample.core.services.client;
+package io.github.jass2125.redis.redis.services.client;
 
-import io.github.jass2125.redisexample.core.entity.Cart;
+import io.github.jass2125.redis.core.entity.Cart;
 import java.util.List;
 
 /**

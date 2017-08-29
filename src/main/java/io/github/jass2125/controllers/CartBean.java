@@ -5,14 +5,15 @@
  */
 package io.github.jass2125.controllers;
 
-import io.github.jass2125.redis.core.services.CartException;
 import io.github.jass2125.redis.core.services.client.ProductService;
-import io.github.jass2125.redisexample.core.entity.Cart;
-import io.github.jass2125.redisexample.core.entity.Item;
-import io.github.jass2125.redisexample.core.entity.Product;
-import io.github.jass2125.redisexample.core.entity.UserPrincipal;
-import io.github.jass2125.redisexample.core.services.client.CartService;
+import io.github.jass2125.redis.core.entity.Cart;
+import io.github.jass2125.redis.core.entity.Item;
+import io.github.jass2125.redis.core.entity.Product;
+import io.github.jass2125.redis.core.entity.UserPrincipal;
+import io.github.jass2125.redis.core.exceptions.CartException;
+import io.github.jass2125.redis.redis.services.client.CartService;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import javax.enterprise.context.RequestScoped;
@@ -45,9 +46,35 @@ public class CartBean implements Serializable {
     @Inject
     private CartService cartService;
     private UserPrincipal userPrincipalOnession;
+    private Cart cart1;
+    private List<Item> items;
+
+    public List<Item> getItems() {
+        recoverUserOnSession();
+        try {
+            cart1 = cartService.getCart(String.valueOf(userPrincipalOnession.getId()));
+            items = cart1.getItems();
+            return items;
+        } catch (CartException e) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
+        }
+        return Collections.EMPTY_LIST;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
 
     public Product getProduct() {
         return product;
+    }
+
+    public void setCart1(Cart cart1) {
+        this.cart1 = cart1;
+    }
+
+    public Cart getCart1() {
+        return cart1;
     }
 
     public Item getItem() {
@@ -91,4 +118,5 @@ public class CartBean implements Serializable {
         }
         return "home.xhtml/faces-redirect=true";
     }
+
 }

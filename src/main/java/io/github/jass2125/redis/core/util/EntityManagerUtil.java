@@ -16,8 +16,8 @@ import javax.persistence.PersistenceContext;
  */
 public class EntityManagerUtil {
 
-    @PersistenceContext
-    @Produces
-    private EntityManager entityManager;
+//    @PersistenceContext
+//    @Produces
+//    private EntityManager entityManager;
 
 }

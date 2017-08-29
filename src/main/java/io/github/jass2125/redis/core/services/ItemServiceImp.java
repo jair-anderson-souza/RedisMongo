@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.github.jass2125.redisexample.core.services;
+package io.github.jass2125.redis.core.services;
 
 import com.google.gson.Gson;
 import io.github.jass2125.redis.core.util.Redis;
-import io.github.jass2125.redisexample.core.entity.Cart;
-import io.github.jass2125.redisexample.core.services.client.ItemService;
+import io.github.jass2125.redis.core.entity.Cart;
+import io.github.jass2125.redis.redis.services.client.ItemService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;

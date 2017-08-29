@@ -1,13 +1,58 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Home</title>
         <link rel="stylesheet" href="css/bootstrap.min.css"></link>
     </h:head>
     <h:body>
-        sdkfhjsd
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="home.xhtml">Redis/PostgreSQL Example</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="products.xhtml">Products</a>
+                    </li>
+                    <li>
+                        <a href="cart.xhtml">Cart</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <h:form>
+                        <li>
+                            <h:commandButton class="btn btn-danger" value="Logout" action="#{userBean.logout()}"/>
+                        </li>
+                    </h:form>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <h1>Cadastro de Produto</h1>
+            <h:form>
+                <h:messages/>
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <h:inputText class="form-control" value="#{productBean.product.description}"/>
+                    <br/>
+                    <div class="form-group">
+                        <label>Preço</label>
+                        <h:inputText class="form-control" value="#{productBean.product.price}"/>
+                    </div>
+                    <br/>
+
+                    <h:commandButton value="Cadastrar Produto" class="btn btn-success" action="#{productBean.saveProduct()}"/>
+                    <!--<input type="submit" ng-click="addItem(item)" value="Adicionar Item"/>-->
+                </div>
+            </h:form>
+            <div class="page-header">
+                <p>Made by <a href="https://www.github.com/jass2125" target="_blank">Anderson Souza</a></p>
+            </div>
+        </div>
     </h:body>
 </html>
 

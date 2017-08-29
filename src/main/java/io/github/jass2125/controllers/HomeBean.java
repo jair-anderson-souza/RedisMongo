@@ -5,7 +5,7 @@
  */
 package io.github.jass2125.controllers;
 
-import io.github.jass2125.redisexample.core.entity.UserPrincipal;
+import io.github.jass2125.redis.core.entity.UserPrincipal;
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;

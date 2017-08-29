@@ -6,7 +6,7 @@
 package io.github.jass2125.controllers;
 
 import com.google.gson.Gson;
-import io.github.jass2125.redisexample.core.entity.Cart;
+import io.github.jass2125.redis.core.entity.Cart;
 import javax.inject.Inject;
 
 /**

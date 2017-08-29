@@ -5,12 +5,10 @@
  */
 package io.github.jass2125.redis.core.dao;
 
-import io.github.jass2125.redisexample.core.entity.Product;
+import io.github.jass2125.redis.core.entity.Product;
 import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -19,25 +17,21 @@ import javax.persistence.EntityManager;
  */
 public class ProductDao {
 
-    @Inject
+    @PersistenceContext
     private EntityManager em;
-
-    @PostConstruct
-    private void init() {
-    }
 
     public List<Product> searchAllProducts() {
         return em.createQuery("SELECT P FROM Product P", Product.class).getResultList();
     }
 
-    public void saveProduct(Product p) {
+    public void saveProduct(Product product) {
         try {
-            em.getTransaction().begin();
-            em.persist(p);
-            em.getTransaction().commit();
+//            em.getTransaction().begin();
+            em.persist(product);
+//            em.getTransaction().commit();
         } catch (Exception e) {
+//            em.getTransaction().rollback();
             e.printStackTrace();
-            em.getTransaction().rollback();
         }
     }
 
