@@ -6,12 +6,9 @@
 package io.github.jass2125.redis.core.interceptors;
 
 import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import javax.annotation.Priority;
-import javax.interceptor.Interceptor;
 import javax.interceptor.InterceptorBinding;
 
 /**
@@ -21,8 +18,6 @@ import javax.interceptor.InterceptorBinding;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
 @InterceptorBinding
-@Inherited
-@Priority(Interceptor.Priority.APPLICATION)
-public @interface SecurityAnnotation {
+public @interface Security {
 
 }

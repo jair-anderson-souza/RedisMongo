@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package io.github.jass2125.redis.core.exceptions;
 
 /**
@@ -15,6 +14,10 @@ public class LoginInvalidException extends Exception {
 
     public LoginInvalidException(Exception e, String msg) {
         super(msg, e);
+    }
+
+    public LoginInvalidException(String msg) {
+        super(msg);
     }
 
 }

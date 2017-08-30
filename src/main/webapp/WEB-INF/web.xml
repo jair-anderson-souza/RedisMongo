@@ -21,4 +21,8 @@
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
+    <error-page>
+        <exception-type>io.github.jass2125.redis.core.exceptions.LoginInvalidException</exception-type>
+        <location>/error.xhtml</location>
+    </error-page>
 </web-app>

@@ -12,6 +12,7 @@ import io.github.jass2125.redis.core.entity.Item;
 import io.github.jass2125.redis.core.entity.Product;
 import io.github.jass2125.redis.core.entity.UserPrincipal;
 import io.github.jass2125.redis.core.exceptions.CartException;
+import io.github.jass2125.redis.core.interceptors.Security;
 import io.github.jass2125.redis.core.services.client.CartService;
 import java.io.Serializable;
 import java.util.Collections;
@@ -29,6 +30,7 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
+@Security
 public class CartBean implements Serializable {
 
     @Inject
