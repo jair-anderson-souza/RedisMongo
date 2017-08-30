@@ -12,6 +12,7 @@ import io.github.jass2125.redis.core.services.client.UserService;
 import io.github.jass2125.redis.core.dao.UserDao;
 import io.github.jass2125.redis.core.entity.UserPrincipal;
 import io.github.jass2125.redis.core.exceptions.LoginInvalidException;
+import io.github.jass2125.redis.core.interceptors.SecurityAnnotation;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Inject;
@@ -28,8 +29,10 @@ public class UserServiceImpl implements UserService {
     private PasswordEncriptor encriptor;
 
     @Override
+    @SecurityAnnotation
     public UserPrincipal loginUser(UserPrincipal user) throws LoginInvalidException {
         try {
+            System.out.println("Login");
             String encryptedPassword = encriptor.encryptPassword(user.getPassword());
             return dao.searchByEmailAndPassword(user.getEmail(), encryptedPassword);
         } catch (CryptographyException | EncodingException e) {

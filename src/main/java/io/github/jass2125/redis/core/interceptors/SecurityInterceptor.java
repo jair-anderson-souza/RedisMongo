@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.github.jass2125.redis.interceptors;
+package io.github.jass2125.redis.core.interceptors;
 
 import javax.annotation.Priority;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
-import javax.persistence.Inheritance;
 
 /**
  *
@@ -17,13 +16,14 @@ import javax.persistence.Inheritance;
  * @author 29/08/2017 19:15:13
  */
 
-//@Priority(Interceptor.Priority.APPLICATION)
-//@Inheritance
+@SecurityAnnotation
+@Interceptor
+@Priority(Interceptor.Priority.APPLICATION)
 public class SecurityInterceptor {
 
-//    @AroundInvoke
-    public void veriryAuthentication() throws Exception {
+    @AroundInvoke
+    public Object verifyAuthentication(InvocationContext context) throws Exception {
         System.out.println("Chamou");
-//        return context.proceed();
+        return context.proceed();
     }
 }
