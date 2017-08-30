@@ -24,7 +24,7 @@ public class UserPrincipal implements Serializable {
     private Long id;
     private String email;
     private String password;
-
+    
     public UserPrincipal() {
     }
 

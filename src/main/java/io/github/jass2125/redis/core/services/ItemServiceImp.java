@@ -8,7 +8,7 @@ package io.github.jass2125.redis.core.services;
 import com.google.gson.Gson;
 import io.github.jass2125.redis.core.util.Redis;
 import io.github.jass2125.redis.core.entity.Cart;
-import io.github.jass2125.redis.redis.services.client.ItemService;
+import io.github.jass2125.redis.core.services.client.ItemService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;

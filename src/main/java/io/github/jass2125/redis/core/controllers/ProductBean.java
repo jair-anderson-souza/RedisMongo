@@ -1,6 +1,7 @@
-package io.github.jass2125.redis.core.services.client;
+package io.github.jass2125.redis.core.controllers;
 
 import io.github.jass2125.redis.core.entity.Product;
+import io.github.jass2125.redis.core.services.client.ProductService;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package io.github.jass2125.controllers;
+package io.github.jass2125.redis.core.converters;
 
 import io.github.jass2125.redis.core.services.client.ProductService;
 import io.github.jass2125.redis.core.entity.Product;

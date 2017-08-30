@@ -3,18 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.github.jass2125.controllers;
+package io.github.jass2125.redis.core.services.client;
 
-import com.google.gson.Gson;
-import javax.enterprise.inject.Produces;
+import io.github.jass2125.redis.core.entity.Cart;
+import java.util.List;
 
 /**
- *
  * @author <a href="mailto:jair_anderson_bs@hotmail.com">Anderson Souza</a>
- * @author 27/08/2017 23:08:32
+ * @since Aug 3, 2017 5:14:25 PM
  */
-public class GsonProducer {
+public interface ItemService {
 
-    @Produces
-    private Gson gson = new Gson();
+    public List<Cart> getItems(Long id);
+
 }

@@ -8,7 +8,7 @@ package io.github.jass2125.redis.core.services;
 import io.github.jass2125.redis.core.exceptions.CryptographyException;
 import io.github.jass2125.redis.core.exceptions.EncodingException;
 import io.github.jass2125.redis.core.util.PasswordEncriptor;
-import io.github.jass2125.redis.redis.services.client.UserService;
+import io.github.jass2125.redis.core.services.client.UserService;
 import io.github.jass2125.redis.core.dao.UserDao;
 import io.github.jass2125.redis.core.entity.UserPrincipal;
 import io.github.jass2125.redis.core.exceptions.LoginInvalidException;

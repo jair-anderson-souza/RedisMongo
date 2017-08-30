@@ -5,15 +5,11 @@
  */
 package io.github.jass2125.redis.core.services;
 
-import io.github.jass2125.controllers.GsonConverter;
-import io.github.jass2125.redis.redis.services.client.CartService;
+import io.github.jass2125.redis.core.converters.GsonConverter;
 import io.github.jass2125.redis.core.dao.CartDao;
 import io.github.jass2125.redis.core.entity.Cart;
-import io.github.jass2125.redis.core.entity.Item;
 import io.github.jass2125.redis.core.exceptions.CartException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import io.github.jass2125.redis.core.services.client.CartService;
 import javax.inject.Inject;
 
 /**

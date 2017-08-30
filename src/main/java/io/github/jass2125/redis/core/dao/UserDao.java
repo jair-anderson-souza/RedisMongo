@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author <a href="mailto:jair_anderson_bs@hotmail.com">Anderson Souza</a>
  * @since Aug 4, 2017 10:34:01 AM
  */
+
 public class UserDao {
 
     @PersistenceContext

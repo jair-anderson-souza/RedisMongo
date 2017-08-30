@@ -3,11 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.github.jass2125.controllers;
+package io.github.jass2125.redis.core.controllers;
 
-import io.github.jass2125.redis.redis.services.client.UserService;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import io.github.jass2125.redis.core.entity.Cart;
+import io.github.jass2125.redis.core.entity.Order;
+import io.github.jass2125.redis.core.services.client.UserService;
 import io.github.jass2125.redis.core.entity.UserPrincipal;
 import io.github.jass2125.redis.core.exceptions.LoginInvalidException;
+import io.github.jass2125.redis.core.services.client.CartService;
 import java.io.Serializable;
 import java.util.Map;
 import javax.enterprise.context.RequestScoped;
@@ -35,7 +40,12 @@ public class UserBean implements Serializable {
     @Inject
     private ExternalContext externalContext;
     @Inject
+    private CartService cartService;
+    @Inject
     private Map<String, Object> sessionMap;
+
+    public UserBean() {
+    }
 
     public UserPrincipal getUser() {
         return user;
@@ -58,10 +68,31 @@ public class UserBean implements Serializable {
     }
 
     public String logout() {
-        sessionMap.remove(sessionMap.get("user"));
         sessionMap.clear();
         externalContext.getFlash().setKeepMessages(true);
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Você foi deslogado", null));
         return "index?faces-redirect=true";
     }
+
+    public String finalizeOrder() {
+        try {
+            Order order = new Order();
+            UserPrincipal userPrincipal = (UserPrincipal) sessionMap.get("user");
+            Cart cart = cartService.getCart(String.valueOf(userPrincipal.getId()));
+            order.setCart(cart);
+            order.setOwner(userPrincipal);
+            MongoClient client = new MongoClient("localhost", 27017);
+            MongoDatabase database = client.getDatabase("redis");
+            System.out.println("Entrou");
+//            createJson(order);
+        } catch (Exception e) {
+            System.out.println("Deu erroF");
+        }
+        return "cart.xhtml";
+    }
+
+//    void createJson(Order order) {
+//        BasicDBObjectBuilder builder = new BasicDBObjectBuilder();
+//        builder.append("order", order.getCart().)
+//    }
 }
