@@ -12,6 +12,7 @@ import io.github.jass2125.redis.core.entity.Order;
 import io.github.jass2125.redis.core.services.client.UserService;
 import io.github.jass2125.redis.core.entity.UserPrincipal;
 import io.github.jass2125.redis.core.exceptions.LoginInvalidException;
+import io.github.jass2125.redis.core.annotations.Security;
 import io.github.jass2125.redis.core.services.client.CartService;
 import java.io.Serializable;
 import java.util.Map;
@@ -67,6 +68,7 @@ public class UserBean implements Serializable {
         }
     }
 
+    @Security
     public String logout() {
         sessionMap.clear();
         externalContext.getFlash().setKeepMessages(true);
@@ -74,25 +76,4 @@ public class UserBean implements Serializable {
         return "index?faces-redirect=true";
     }
 
-    public String finalizeOrder() {
-        try {
-            Order order = new Order();
-            UserPrincipal userPrincipal = (UserPrincipal) sessionMap.get("user");
-            Cart cart = cartService.getCart(String.valueOf(userPrincipal.getId()));
-            order.setCart(cart);
-            order.setOwner(userPrincipal);
-            MongoClient client = new MongoClient("localhost", 27017);
-            MongoDatabase database = client.getDatabase("redis");
-            System.out.println("Entrou");
-//            createJson(order);
-        } catch (Exception e) {
-            System.out.println("Deu erroF");
-        }
-        return "cart.xhtml";
-    }
-
-//    void createJson(Order order) {
-//        BasicDBObjectBuilder builder = new BasicDBObjectBuilder();
-//        builder.append("order", order.getCart().)
-//    }
 }
