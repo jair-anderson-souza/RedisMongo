@@ -15,7 +15,6 @@ import io.github.jass2125.redis.core.exceptions.LoginInvalidException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Inject;
-import io.github.jass2125.redis.core.interceptors.Security;
 
 /**
  * @author <a href="mailto:jair_anderson_bs@hotmail.com">Anderson Souza</a>
