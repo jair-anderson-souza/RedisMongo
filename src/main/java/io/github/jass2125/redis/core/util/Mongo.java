@@ -5,11 +5,12 @@
  */
 package io.github.jass2125.redis.core.util;
 
-import com.mongodb.BasicDBObjectBuilder;
-import com.mongodb.DBObject;
+import io.github.jass2125.redis.core.exceptions.OrderException;
 import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import io.github.jass2125.redis.core.entity.UserPrincipal;
+import javax.inject.Inject;
+import org.bson.Document;
 
 /**
  *
@@ -17,26 +18,22 @@ import io.github.jass2125.redis.core.entity.UserPrincipal;
  * @author 29/08/2017 21:33:57
  */
 public class Mongo {
-    
-    public MongoDatabase createConnection() {
-        MongoClient mongoClient = new MongoClient("localhost", 27017);
-        return mongoClient.getDatabase("megasena");
-//        return mongoClient;
+
+    @Inject
+    private MongoClient mongoClient;
+    @Inject
+    private MongoDatabase mongoDatabase;
+    @Inject
+    private MongoCollection<Document> mongoCollection;
+
+    public void save(String json) throws OrderException {
+        try {
+            Document doc = new Document();
+            doc.append("order", json);
+            mongoCollection.insertOne(doc);
+        } catch (Exception e) {
+            throw new OrderException(e, "Não foi possível salvar o cart");
+        }
     }
-    
-    public static void main(String[] args) {
-        UserPrincipal user = new UserPrincipal();
-        user.setId(1L);
-        user.setEmail("jair");
-        user.setPassword("123");
-        
-        BasicDBObjectBuilder builder = new BasicDBObjectBuilder();
-        builder.append("_id", user.getId()).append("_email", user.getEmail()).append("password", user.getPassword());
-        DBObject get = builder.get();
-        System.out.println(get);
-        
-        //        Mongo mongo = new Mongo();
-        //        MongoDatabase createConnection = mongo.createConnection();
-        //        System.out.println(createConnection.getName());
-    }
+
 }

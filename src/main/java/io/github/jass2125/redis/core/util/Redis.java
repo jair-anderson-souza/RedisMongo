@@ -1,6 +1,5 @@
 package io.github.jass2125.redis.core.util;
 
-import io.github.jass2125.redis.core.exceptions.CartException;
 import java.util.Set;
 import redis.clients.jedis.Jedis;
 
