@@ -5,7 +5,7 @@
  */
 package io.github.jass2125.redis.core.interceptors;
 
-import io.github.jass2125.redis.core.annotations.UserOnAnnotation;
+import io.github.jass2125.redis.core.annotations.Security;
 import io.github.jass2125.redis.core.entity.UserPrincipal;
 import io.github.jass2125.redis.core.exceptions.LoginInvalidException;
 import javax.annotation.Priority;
@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
+import io.github.jass2125.redis.core.annotations.UserSession;
 
 /**
  *
@@ -25,7 +26,7 @@ import javax.interceptor.InvocationContext;
 public class SecurityInterceptor {
 
     @Inject
-    @UserOnAnnotation
+    @UserSession
     private UserPrincipal user;
 
     @AroundInvoke
