@@ -18,5 +18,5 @@ import javax.inject.Qualifier;
 @Target({ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Qualifier
-public @interface UserOnAnnotation {
+public @interface UserSession {
 }

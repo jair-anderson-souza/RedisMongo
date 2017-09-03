@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.github.jass2125.redis.core.interceptors;
+package io.github.jass2125.redis.core.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
