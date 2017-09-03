@@ -5,10 +5,10 @@
  */
 package io.github.jass2125.redis.core.produces;
 
-import io.github.jass2125.redis.core.annotations.UserOnAnnotation;
 import io.github.jass2125.redis.core.entity.UserPrincipal;
 import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
+import io.github.jass2125.redis.core.annotations.UserSession;
 
 /**
  *
@@ -16,6 +16,8 @@ import javax.faces.context.FacesContext;
  * @author 29/08/2017 22:11:07
  */
 public class SessionProducer {
-    @Produces @UserOnAnnotation
+
+    @Produces
+    @UserSession
     private UserPrincipal userPrincipal = (UserPrincipal) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
 }

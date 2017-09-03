@@ -15,7 +15,7 @@ import javax.faces.context.FacesContext;
  * @author <a href="mailto:jair_anderson_bs@hotmail.com">Anderson Souza</a>
  * @author 27/08/2017 17:47:25
  */
-public class ProducerFaces {
+public class FacesProducer {
 
     @Produces
     private FacesContext context = FacesContext.getCurrentInstance();

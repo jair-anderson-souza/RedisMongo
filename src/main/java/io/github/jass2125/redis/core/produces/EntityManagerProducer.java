@@ -7,7 +7,7 @@ package io.github.jass2125.redis.core.produces;
 
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -16,8 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 public class EntityManagerProducer {
 
-//    @PersistenceContext
-//    @Produces
-//    private EntityManager entityManager;
+    @Produces
+    private EntityManager entityManager = Persistence.createEntityManagerFactory("pu").createEntityManager();
 
 }
