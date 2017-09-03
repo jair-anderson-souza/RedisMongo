@@ -7,7 +7,9 @@ package io.github.jass2125.redis.core.dao;
 
 import io.github.jass2125.redis.core.entity.Product;
 import java.util.List;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -17,7 +19,7 @@ import javax.persistence.PersistenceContext;
  */
 public class ProductDao {
 
-    @PersistenceContext
+    @Inject
     private EntityManager em;
 
     public List<Product> searchAllProducts() {
@@ -26,11 +28,10 @@ public class ProductDao {
 
     public void saveProduct(Product product) {
         try {
-//            em.getTransaction().begin();
+            em.getTransaction().begin();
             em.persist(product);
-//            em.getTransaction().commit();
+            em.getTransaction().commit();
         } catch (Exception e) {
-//            em.getTransaction().rollback();
             e.printStackTrace();
         }
     }

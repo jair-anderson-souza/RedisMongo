@@ -7,22 +7,20 @@ package io.github.jass2125.redis.core.dao;
 
 import io.github.jass2125.redis.core.entity.UserPrincipal;
 import io.github.jass2125.redis.core.exceptions.LoginInvalidException;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 /**
  * @author <a href="mailto:jair_anderson_bs@hotmail.com">Anderson Souza</a>
  * @since Aug 4, 2017 10:34:01 AM
  */
-
 public class UserDao {
 
-    @PersistenceContext
+    @Inject
     private EntityManager em;
-
-    private void init() {
-    }
 
     public UserPrincipal searchByEmailAndPassword(String email, String password) throws LoginInvalidException {
         try {
